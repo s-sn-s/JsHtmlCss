@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+    Functions
+    </title>
+</head>
+<body>
+  <h1>Rock Paper Scissors with JS functions</h1>
+  <p>Select one :</p>
+  <button class="submitClick" onclick="playGame('Rock')">
+    Rock
+  </button>
+  <br/>
+  <button class="submitClick" onclick="playGame('Paper')">
+    Paper
+  </button>
+  <br/>
+  <button class="submitClick" onclick="playGame('Scissor')">
+    Scissor
+  </button>
+  <script>
+    function playGame(playerMove){
+      const cpuMove = pickCPUmove();
+      if(playerMove==='Rock'){
+        if(cpuMove==='Rock')console.log(' Tie!');
+          else if (cpuMove==='Paper')console.log(' Lost!');
+          else if (cpuMove==='Scissor')console.log(' Won!');
+      }
+      else if(playerMove==='Paper'){
+        if(cpuMove==='Rock')console.log(' Won!');
+          else if (cpuMove==='Paper')console.log(' Tie!');
+          else if (cpuMove==='Scissor')console.log(' Lost!');
+      }
+      else if(playerMove==='Scissor'){
+        if(cpuMove==='Rock')console.log(' Lost!');
+          else if (cpuMove==='Paper')console.log(' Won!');
+          else if (cpuMove==='Scissor')console.log(' Tie!');
+      }
+    }
+
+    function pickCPUmove(){
+      let cpuMove = '';
+      const randomCPUselection = Math.random();
+      if(randomCPUselection<0.34)
+        cpuMove = 'Rock';
+      else if(randomCPUselection>0.33
+      && randomCPUselection<0.67
+      )
+        cpuMove = 'Paper';
+      else if(randomCPUselection>0.66)
+        cpuMove = 'Scissor';
+      console.log(cpuMove);
+      return cpuMove
+    }
+  </script>
+</body>
+</html>

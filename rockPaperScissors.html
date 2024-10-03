@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      Rock Paper Scissors
+    </title>
+    <style>
+      .submitClick{
+        background-color: aquamarine;
+        color: brown;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Rock Paper Scissors</h1>
+    <p>Select one :</p>
+    <button onclick="
+      const randomCPUselection1 = Math.random();
+      if(randomCPUselection1<0.34)
+        console.log('Rock \n It\'s a Tie!')
+      else if(randomCPUselection1>0.33
+      && randomCPUselection1<0.67
+      )
+        console.log('Paper! \n You lost!')
+      else if(randomCPUselection1>0.66)
+        console.log('Scissors! \n You Won!')
+    ">
+      Rock
+    </button>
+    <br/>
+    <button onclick="
+      const randomCPUselection2 = Math.random();
+      if(randomCPUselection2<0.34)
+        console.log('Rock \n You Won!')
+      else if(randomCPUselection2>0.33
+      && randomCPUselection2<0.67
+      )
+        console.log('Paper! \n It\'s a Tie!')
+      else if(randomCPUselection2>0.66)
+        console.log('Scissors! \n You lost!')
+    ">
+      Paper
+    </button>
+    <br/>
+    <button class="submitClick" onclick="
+      const randomCPUselection3 = Math.random();
+      if(randomCPUselection3<0.34)
+        console.log('Rock \n You lost!')
+      else if(randomCPUselection3>0.33
+      && randomCPUselection3<0.67
+      )
+        console.log('Paper! \n You Won!')
+      else if(randomCPUselection3>0.66)
+        console.log('Scissors! \n It\'s a Tie!')
+      ">
+      Scissor
+    </button>
+  </body>
+</html>

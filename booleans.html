@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      JS Boolean
+    </title>
+    <style>
+      .submitClick{
+        background-color: aquamarine;
+        color: brown;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>JS Boolean Prac</h1>
+    <p>Do you want to continue?</p>
+    <button onclick="
+    _boolValue = true
+    ">
+      Yes
+    </button>
+    <br/>
+    <button onclick="
+    _boolValue = false
+    ">
+      No
+    </button>
+    <br/>
+    <button class="submitClick" onclick="
+      alert(`This is 
+            our multi line 
+            answer : ${_boolValue}`)
+      console.log(`Our answer ${_boolValue}`)">
+      Show Answer
+    </button>
+    <script>
+      let _boolValue;
+      
+    </script>
+  </body>
+</html>
