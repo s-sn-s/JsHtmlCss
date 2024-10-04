@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      DOM Proj
+    </title>
+  </head>
+  <body>
+    <p>
+      YT Subscribe Button
+    </p>
+    <button class = 'js-subscribe' onclick="changeSubscribeText();">
+      Subscribe!
+    </button>
+    <script>
+      function changeSubscribeText(){
+        const SubElem = document.querySelector('.js-subscribe');
+        if(SubElem.innerHTML==='Subscribe!')
+          SubElem.innerHTML='Subscribed';
+        else
+          SubElem.innerHTML='Subscribe!';
+      }
+    </script>
+  </body>
+</html>
