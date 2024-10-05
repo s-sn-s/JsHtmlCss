@@ -26,61 +26,68 @@
     Reset points
   </button>  
   <script>
-    let points = JSON.parse(localStorage.getItem('results'));
+    let points =
+      {
+        Won: 0,
+        Lost: 0,
+        Tie: 0
+      };
+    localStorage.setItem('results',JSON.stringify(points));
+    console.log(localStorage.getItem('results'));
+    
+
+    // let points = JSON.parse(localStorage.getItem('results'));
     // || {
     //     Won: 0,
     //     Lost: 0,
     //     Tie: 0
     //   };
 
-    if(!points){
-      points=
-      {
-        Won: 0,
-        Lost: 0,
-        Tie: 0
-      };
-    }
+    // if(!points){
+    //   points=
+    //   {
+    //     Won: 0,
+    //     Lost: 0,
+    //     Tie: 0
+    //   };
+    // }
 
-    console.log(points.Won);
-    console.log(points.Lost);
-    console.log(points.Tie);
+    
+    // function playGame(playerMove){
+    //   const cpuMove = pickCPUmove();
+    //   let result = '';
+    //   if(playerMove==='Rock'){
+    //     if(cpuMove==='Rock')result = ' Tie!';
+    //       else if (cpuMove==='Paper')result = ' Lost!';
+    //       else if (cpuMove==='Scissor')result = ' Won!';
+    //   }
+    //   else if(playerMove==='Paper'){
+    //     if(cpuMove==='Rock')result = ' Won!';
+    //       else if (cpuMove==='Paper')result = ' Tie!';
+    //       else if (cpuMove==='Scissor')result = ' Lost!';
+    //   }
+    //   else if(playerMove==='Scissor'){
+    //     if(cpuMove==='Rock')result = ' Lost!';
+    //       else if (cpuMove==='Paper')result = ' Won!';
+    //       else if (cpuMove==='Scissor')result = ' Tie!';
+    //   }
 
-    function playGame(playerMove){
-      const cpuMove = pickCPUmove();
-      let result = '';
-      if(playerMove==='Rock'){
-        if(cpuMove==='Rock')result = ' Tie!';
-          else if (cpuMove==='Paper')result = ' Lost!';
-          else if (cpuMove==='Scissor')result = ' Won!';
-      }
-      else if(playerMove==='Paper'){
-        if(cpuMove==='Rock')result = ' Won!';
-          else if (cpuMove==='Paper')result = ' Tie!';
-          else if (cpuMove==='Scissor')result = ' Lost!';
-      }
-      else if(playerMove==='Scissor'){
-        if(cpuMove==='Rock')result = ' Lost!';
-          else if (cpuMove==='Paper')result = ' Won!';
-          else if (cpuMove==='Scissor')result = ' Tie!';
-      }
+    //   if(result===' Won!')points.Won+=1;
+    //   else if(result===' Lost!')points.Lost+=1;
+    //   else if(result===' Tie!') points.Tie+=1;
 
-      if(result===' Won!')points.Won+=1;
-      else if(result===' Lost!')points.Lost+=1;
-      else if(result===' Tie!') points.Tie+=1;
-
-      // let resultStr = {
-      // Won : points.Won,
-      // Lost : points.Lost,
-      // Tie : points.Tie
-      // }
-      alert(`Your move was ${playerMove} and ${cpuMove} \n You ${result} 
-      Won : ${points.Won}
-      Lost : ${points.Lost}
-      Tie : ${points.Tie}
-      `);
-      localStorage.setItem('results',JSON.stringify(points));
-    }
+    //   // let resultStr = {
+    //   // Won : points.Won,
+    //   // Lost : points.Lost,
+    //   // Tie : points.Tie
+    //   // }
+    //   alert(`Your move was ${playerMove} and ${cpuMove} \n You ${result} 
+    //   Won : ${points.Won}
+    //   Lost : ${points.Lost}
+    //   Tie : ${points.Tie}
+    //   `);
+    //   localStorage.setItem('results',JSON.stringify(points));
+    // }
 
     function pickCPUmove(){
       let cpuMove = '';
