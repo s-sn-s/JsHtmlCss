@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Captured Images Gallery</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f0f0; /* A light background for the page itself */
+            display: grid; /* Enable CSS Grid on the body */
+            grid-template-columns: repeat(2, 1fr); /* Fixed 2 columns */
+            gap: 20px; /* Space between grid items */
+            padding: 20px; /* Padding around the grid */
+            justify-content: center; /* Center grid items horizontally */
+            align-items: start; /* Align grid items to the start of their row */
+            min-height: 100vh; /* Ensure body takes full viewport height for centering */
+            box-sizing: border-box; /* Include padding in element's total width and height */
+        }
+
+        /* Styling for the image background containers */
+        .image-background-example {
+            position: relative; /* Needed for overlay */
+            width: 100%; /* Take full width of grid column */
+            padding-top: 66.66%; /* 3:2 aspect ratio (e.g., 600x400), adjust as needed for your images */
+            overflow: hidden; /* Ensures content/overlay stays within bounds */
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.25); /* Subtle shadow for depth */
+            background-size: cover; /* Ensures image covers the entire div */
+            background-position: center; /* Centers the image within the div */
+            background-repeat: no-repeat; /* Prevents image repetition */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth hover effect */
+            cursor: pointer; /* Indicate interactivity */
+        }
+
+        /* Overlay for hover effect */
+        .image-background-example::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0); /* Start transparent */
+            transition: background-color 0.3s ease-in-out;
+            border-radius: 15px; /* Match parent border-radius */
+        }
+
+        .image-background-example:hover::before {
+            background-color: rgba(0, 0, 0, 0.3); /* Darken slightly on hover */
+        }
+
+        /* Optional: Add a subtle caption on hover (if you decide to add text later) */
+        .image-background-example .caption {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            color: white;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-align: left;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+            opacity: 0; /* Hidden by default */
+            transition: opacity 0.3s ease-in-out;
+            pointer-events: none; /* Allows clicks to pass through to the div if it were a link */
+        }
+
+        .image-background-example:hover .caption {
+            opacity: 1; /* Show on hover */
+        }
+
+        /* Hover effect for grid items */
+        .image-background-example:hover {
+            transform: translateY(-5px); /* Lifts the box slightly */
+            box-shadow: 0 12px 24px rgba(0,0,0,0.35); /* More prominent shadow on hover */
+        }
+
+        .my-image-1 {
+            background-image: url('gallery/IMG_0252.JPG');
+        }
+
+        .my-image-2 {
+            background-image: url('gallery/IMG_1691.JPG');
+        }
+
+        .my-image-3 {
+            background-image: url('gallery/IMG_2008.JPG');
+        }
+
+        .my-image-4 {
+            background-image: url('gallery/IMG_2047.JPG');
+        }
+
+        /* --- Fullscreen Image Modal Styles --- */
+        .fullscreen-modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place even when scrolling */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            background-color: rgba(156, 156, 156, 0.268); /* Black background with opacity */
+            justify-content: center; /* Center content horizontally */
+            align-items: center; /* Center content vertically */
+            backdrop-filter: blur(5px); /* Optional: blur background for modern look */
+            -webkit-backdrop-filter: blur(5px); /* Safari support */
+            animation: fadeIn 0.3s ease-out forwards; /* Fade in animation */
+        }
+
+        .fullscreen-modal img {
+            max-width: 90%; /* Max width of image in modal */
+            max-height: 90%; /* Max height of image in modal */
+            display: block; /* Remove extra space below image */
+            object-fit: contain; /* Ensure the whole image is visible */
+            border-radius: 8px; /* Slightly rounded corners for the image */
+            box-shadow: 0 0 25px rgba(0,0,0,0.5); /* Shadow for the image */
+            animation: zoomIn 0.3s ease-out forwards; /* Zoom in animation */
+        }
+
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #00000062;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            z-index: 1001; 
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: #000000af;
+            text-decoration: none;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        /* Mobile responsiveness for modal */
+        @media (max-width: 600px) {
+            .fullscreen-modal img {
+                max-width: 95%;
+                max-height: 95%;
+            }
+            .close-button {
+                top: 10px;
+                right: 20px;
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="image-background-example my-image-1" data-full-image="gallery/IMG_0252.JPG">
+        <!-- Optional: add a caption here -->
+        <!-- <div class="caption">Majestic Peaks</div> -->
+    </div>
+
+    <div class="image-background-example my-image-2" data-full-image="gallery/IMG_1691.JPG">
+        <!-- Optional: add a caption here -->
+        <!-- <div class="caption">Urban Lights</div> -->
+    </div>
+
+    <div class="image-background-example my-image-3" data-full-image="gallery/IMG_2008.JPG">
+        <!-- Optional: add a caption here -->
+        <!-- <div class="caption">Captured Moment</div> -->
+    </div>
+
+    <div class="image-background-example my-image-4" data-full-image="gallery/IMG_2047.JPG">
+        <!-- Optional: add a caption here -->
+        <!-- <div class="caption">Delicious Creation</div> -->
+    </div>
+
+    <!-- Fullscreen Image Modal Container -->
+    <div id="imageModal" class="fullscreen-modal">
+        <span class="close-button">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        // Get the modal, image, and close button elements
+        const imageModal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const closeButton = document.querySelector('.close-button');
+        const imageDivs = document.querySelectorAll('.image-background-example');
+
+        // Add click event listeners to each image div
+        imageDivs.forEach(div => {
+            div.addEventListener('click', function() {
+                // Get the background image URL
+                // We'll use a data attribute for the full-resolution image if available
+                const imageUrl = this.getAttribute('data-full-image') || 
+                                 this.style.backgroundImage.slice(5, -2); // Extracts URL from 'url("...")'
+
+                modalImage.src = imageUrl; // Set the image source
+                imageModal.style.display = 'flex'; // Show the modal
+            });
+        });
+
+        // Add click event listener to the close button
+        closeButton.addEventListener('click', function() {
+            imageModal.style.display = 'none'; // Hide the modal
+            modalImage.src = ''; // Clear image source to prevent flickering on next open
+        });
+
+        // Add click event listener to the modal overlay itself to close it
+        imageModal.addEventListener('click', function(event) {
+            if (event.target === imageModal) {
+                imageModal.style.display = 'none'; // Hide the modal
+                modalImage.src = ''; // Clear image source
+            }
+        });
+
+        // Optional: Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && imageModal.style.display === 'flex') {
+                imageModal.style.display = 'none';
+                modalImage.src = '';
+            }
+        });
+    </script>
+</body>
+</html>
