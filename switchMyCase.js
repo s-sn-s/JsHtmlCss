@@ -1,4 +1,4 @@
-let browser = 'mine';
+let browser = 'raizor';
 
 console.log('Switch cases!');
 
@@ -11,6 +11,10 @@ switch(browser){
     break;
   default:
     console.log(`Sorry! 
-      the answer is ${browser}`);
+      the '${browser}' browser is not supported`);
     break;
 }
+
+//ternary
+let a = 1>0? true: false;
+console.log(a);
