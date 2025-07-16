@@ -29,3 +29,17 @@ while(l2<=10){
   l2++;
 }
 
+console.log("--------------");
+//array
+let ary = [1,2,3];
+console.log(ary);
+console.log('-----------');
+//for...of
+for(let a of ary){
+  console.log(a);
+}
+console.log('-----------');
+//for...in
+for(let a in ary){
+  console.log(a);
+}
