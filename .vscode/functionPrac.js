@@ -25,3 +25,17 @@ if(isBroswerLaunched){
 }else{
   console.log('Test failed!');
 }
+
+
+// let nestedObj2 = {
+//   1 : 'xyz',
+//   2 : 20,
+//   3 : {
+//     maths : 90,
+//     science : 84
+//   }
+// };
+
+// for(let a in nestedObj2){
+//   console.log(typeof(a));
+// }
