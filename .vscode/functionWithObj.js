@@ -1,7 +1,7 @@
 function myFuncWithObj(myFuncObj){
-  // console.log("In  function call " + myFuncObj);
+  console.log("\nIn  function call \n" + Object.entries(myFuncObj));
   myFuncObj.age = 31;
-  console.log("In  function call " + myFuncObj.age);
+  console.log("\nIn  function call " + myFuncObj.age);
 }
 
 let funcObj={
@@ -11,4 +11,4 @@ let funcObj={
 }
 console.log("Before function call "+ funcObj.age);
 myFuncWithObj(funcObj);
-console.log("After function call " + funcObj.age);
+console.log("\nAfter function call " + funcObj.age);

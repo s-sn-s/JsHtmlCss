@@ -5,28 +5,17 @@
 function getEmpDev(empName){
   console.log('Emp name : ' + empName);
   let dev = [];
-
-  if(empName.trim().toLowerCase()==='savin'){
+  let empN = empName.trim().toLowerCase();
+  if(empN==='savin'){
     dev.push('mac','iwatch');
     return dev;
-  }else if(empName.trim().toLowerCase()==='sachin'){
+  }else if(empN==='sachin'){
         dev.push('iwatch');  
         return dev;
   }
-  else{
-    console.log('invalid emp name');
-  }
-  //   case 'savin':
-  //     dev.push('mac','iwatch');
-  //     break;
-  //   case 'sachin':
-  //     dev.push('iwatch');
-  //     break;
-  //   default:
-  //     console.log('invalid emp name!');
-  //     break;
-  // }
+  else{console.log('invalid emp name');}
   return dev;
 }
 
-let empDevList = getEmpDev();
+let empDevList = getEmpDev('sachin');
+console.log(empDevList)
