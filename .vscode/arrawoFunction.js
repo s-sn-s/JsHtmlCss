@@ -47,3 +47,20 @@ let checkNum = numAr.some(numIs=>{
 });
 if(checkNum){console.log('Number found!')}
 else{console.log('Number not found!')}
+
+breakMe();
+//invalid
+//function(a)=>{console.log(a)};
+let c = 4;
+(c)=>{console.log(c)};
+let b = (a=>a*a)(c); //Arrow with IIFE  
+console.log(b);
+
+let myNumAr = [5,4,3,2,1];
+myNumAr.some(n=>{
+  console.log(n);  
+  if(n===c){
+    console.log(`${c} found in ${myNumAr}`);
+    return true;
+  }
+})
