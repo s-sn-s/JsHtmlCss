@@ -11,14 +11,10 @@ let myPromise = new Promise((resolved,rejected)=>{
     rejected();
   }
 });
-
-myPromise
-.then(result=>{
+myPromise.then(result=>{
   console.log('passed');
-})
-.catch(error=>{
+}).catch(error=>{
   console.log('failed');
-})
-.finally(()=>{
+}).finally(()=>{
   console.log('lets have party!');
 });
